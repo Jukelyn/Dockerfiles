@@ -1,0 +1,13 @@
+---
+services:
+  name:
+    container_name: name
+    build:
+      context: .
+      dockerfile: Dockerfile # Check this
+    restart: always
+    # networks:
+    #   - main_sites
+# networks:
+#   main_sites:
+#     external: true

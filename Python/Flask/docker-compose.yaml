@@ -1,0 +1,13 @@
+services:
+  flask_app:
+    container_name: flask_app
+    build:
+      context: .
+      dockerfile: Dockerfile # Check this
+    restart: always
+#     networks:
+#       - main_sites
+
+# networks:
+#   main_sites:
+#     external: true

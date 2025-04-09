@@ -1,0 +1,28 @@
+---
+services:
+  api:
+    container_name: api
+    build:
+      context: ./api # Check this
+      dockerfile: Dockerfile
+    # networks: # Port 5000
+    #   - main_sites
+    restart: always
+
+  frontend:
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: app/Dockerfile # Check this
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://api.jukelyn.com}
+    # networks: # Port 3000
+    #   - main_sites
+    restart: always
+    environment:
+      - NEXT_PUBLIC_API_URL=https://api.jukelyn.com
+    depends_on:
+      - api
+# networks:
+#   main_sites:
+#     external: true
